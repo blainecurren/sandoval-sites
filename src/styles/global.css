@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/*
+  Tailwind v4 CSS-first theme. Each variant's palette is registered as named
+  colors so pages can use utilities like `bg-steel`, `text-amber`, `bg-forest`.
+  Fonts stay system-native (matches the mockups) — no external font requests,
+  which keeps the site fully self-contained and fast on GitHub Pages.
+*/
+@theme {
+  /* Industrial */
+  --color-ind-ink: #14171c;
+  --color-ind-steel: #20262e;
+  --color-ind-panel: #262d37;
+  --color-ind-line: #333c48;
+  --color-ind-amber: #f5a623;
+  --color-ind-amber-d: #d98a05;
+  --color-ind-paper: #f4f5f7;
+  --color-ind-muted: #9aa4b1;
+
+  /* Rustic */
+  --color-rus-cream: #f6f1e7;
+  --color-rus-sand: #efe6d5;
+  --color-rus-ink: #2b2620;
+  --color-rus-green: #3d5a40;
+  --color-rus-green-d: #2f4632;
+  --color-rus-rust: #b5502b;
+  --color-rus-rust-d: #9a3f20;
+  --color-rus-gold: #c8a24a;
+  --color-rus-muted: #6c6355;
+  --color-rus-line: #e2d7c3;
+
+  /* Modern */
+  --color-mod-ink: #0e1726;
+  --color-mod-slate: #1e293b;
+  --color-mod-grey: #64748b;
+  --color-mod-light: #f1f5f9;
+  --color-mod-blue: #2563eb;
+  --color-mod-blue-d: #1d4ed8;
+  --color-mod-accent: #0ea5e9;
+  --color-mod-line: #e2e8f0;
+
+  --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Diagonal-hatch placeholder used where real job-site photos will drop in. */
+.photo-ph {
+  background-image: repeating-linear-gradient(135deg, #2d353f 0 22px, #28303a 22px 44px);
+}

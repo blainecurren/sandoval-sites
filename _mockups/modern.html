@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandoval Fencing &amp; Welding — Custom Metalwork &amp; Fencing | North Texas</title>
+<style>
+  :root{
+    --bg:#ffffff; --ink:#0e1726; --slate:#1e293b; --grey:#64748b; --light:#f1f5f9;
+    --blue:#2563eb; --blue-d:#1d4ed8; --line:#e2e8f0; --accent:#0ea5e9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{line-height:1.1;font-weight:800;letter-spacing:-.025em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+  a{color:inherit;text-decoration:none}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:700;padding:14px 26px;border-radius:10px;font-size:15px;transition:.2s;border:2px solid var(--ink)}
+  .btn:hover{background:var(--slate);transform:translateY(-2px)}
+  .btn-b{background:var(--blue);border-color:var(--blue)}
+  .btn-b:hover{background:var(--blue-d)}
+  .btn-o{background:#fff;color:var(--ink);border:2px solid var(--line)}
+  .btn-o:hover{border-color:var(--ink);background:#fff}
+
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .mk{width:40px;height:40px;background:var(--ink);border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:18px}
+  .mk i{font-style:normal;color:var(--accent)}
+  .brand b{font-size:16.5px;font-weight:800;letter-spacing:-.01em;display:block;line-height:1.05}
+  .brand span{font-size:11px;color:var(--grey);letter-spacing:.12em;text-transform:uppercase}
+  .navlinks{display:flex;gap:30px;align-items:center}
+  .navlinks a{font-size:14.5px;color:var(--slate);font-weight:600}
+  .navlinks a:hover{color:var(--blue)}
+  @media(max-width:860px){.navlinks a:not(.btn){display:none}}
+
+  /* hero */
+  .hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:90px 26px 80px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--light);color:var(--slate);font-size:13px;font-weight:600;padding:7px 14px;border-radius:30px;margin-bottom:24px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:#22c55e}
+  .hero h1{font-size:clamp(38px,5.4vw,62px)}
+  .hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--blue),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:19px;color:var(--grey);margin:22px 0 32px;max-width:500px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-vis{position:relative}
+  .ph{position:relative;border-radius:18px;overflow:hidden;background:
+      linear-gradient(135deg,#eef2f7,#e2e8f0);border:1px solid var(--line);display:grid;place-items:center}
+  .ph span{color:#94a3b8;font-size:13px;font-weight:600;text-align:center;padding:0 16px}
+  .hero-vis .ph{aspect-ratio:4/5}
+  .float{position:absolute;bottom:-18px;left:-18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;box-shadow:0 20px 40px rgba(14,23,38,.12)}
+  .float b{font-size:26px;color:var(--ink);letter-spacing:-.02em}
+  .float small{display:block;color:var(--grey);font-size:12.5px;font-weight:600}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:40px}.hero-vis .ph{aspect-ratio:16/11}}
+
+  /* stat strip */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--light)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 26px}
+  .stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-.03em}
+  .stat span{color:var(--grey);font-size:14px;font-weight:600}
+  @media(max-width:640px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:26px}}
+
+  section{padding:92px 0}
+  .eyebrow{color:var(--blue);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:14px}
+  .sh h2{font-size:clamp(30px,4vw,46px)}
+  .sh p{color:var(--grey);font-size:18px;margin-top:14px;max-width:560px}
+
+  /* services asymmetric */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+  .card{border:1px solid var(--line);border-radius:18px;padding:34px;transition:.2s;background:#fff;position:relative;overflow:hidden}
+  .card:hover{border-color:var(--ink);box-shadow:0 18px 40px rgba(14,23,38,.08)}
+  .card .k{width:52px;height:52px;border-radius:13px;background:var(--light);display:grid;place-items:center;font-size:24px;margin-bottom:20px}
+  .card:nth-child(1) .k{background:#dbeafe;color:#2563eb}
+  .card:nth-child(2) .k{background:#e0f2fe;color:#0284c7}
+  .card:nth-child(3) .k{background:#dcfce7;color:#16a34a}
+  .card:nth-child(4) .k{background:#fef3c7;color:#d97706}
+  .card h3{font-size:22px;margin-bottom:8px}
+  .card p{color:var(--grey);font-size:15.5px}
+  @media(max-width:640px){.svc-grid{grid-template-columns:1fr}}
+
+  /* work — big feature + strip */
+  .work{background:var(--ink);color:#fff}
+  .work .eyebrow{color:var(--accent)}
+  .work .sh p{color:#94a3b8}
+  .wlay{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:44px}
+  .work .ph{background:linear-gradient(135deg,#1e293b,#0f172a);border-color:#334155}
+  .work .ph span{color:#64748b}
+  .wlay .ph.tall{aspect-ratio:auto}
+  .wcol{display:grid;gap:16px}
+  .wcol .ph{aspect-ratio:16/9}
+  @media(max-width:760px){.wlay{grid-template-columns:1fr}.wlay .ph.tall{aspect-ratio:16/10}}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px}
+  .step{padding-top:26px;border-top:3px solid var(--ink)}
+  .step .n{font-size:14px;font-weight:800;color:var(--blue);letter-spacing:.1em}
+  .step h3{font-size:20px;margin:8px 0 8px}
+  .step p{color:var(--grey);font-size:15px}
+  @media(max-width:720px){.steps{grid-template-columns:1fr}}
+
+  /* cta band */
+  .cta{background:linear-gradient(120deg,var(--blue),var(--accent));color:#fff;border-radius:0}
+  .cta .wrap{text-align:center}
+  .cta h2{font-size:clamp(28px,4vw,44px)}
+  .cta p{font-size:19px;margin:14px 0 30px;opacity:.95}
+  .cta .btn{background:#fff;color:var(--blue);border-color:#fff}
+  .cta .btn:hover{background:#f1f5f9}
+  .cta small{display:block;margin-top:18px;opacity:.9;font-size:14px}
+
+  footer{background:#0a0f1a;color:#94a3b8;padding:56px 0 28px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  .foot b{color:#fff;font-size:17px}
+  .foot a{color:#cbd5e1}.foot a:hover{color:#fff}
+  .foot h4{color:#fff;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+  .foot p{font-size:14.5px;margin:5px 0}
+  .copy{border-top:1px solid #1e293b;margin-top:36px;padding-top:20px;font-size:13px;color:#64748b}
+  .tg{display:inline-block;background:rgba(37,99,235,.2);color:#93c5fd;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:5px 12px;border-radius:20px}
+  @media(max-width:640px){.foot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="mk">S<i>.</i></div>
+      <div><b>Sandoval</b><span>Fencing &amp; Welding</span></div>
+    </div>
+    <nav class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="tel:9406329186">940-632-9186</a>
+      <a href="#quote" class="btn btn-b">Free Estimate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span> Now booking projects across North Texas</span>
+      <h1>Custom metalwork, <em>done right.</em></h1>
+      <p>Fencing, gates, shop buildings, and pickleball courts — precision-welded and built to last, by a local team you can count on.</p>
+      <div class="hero-cta">
+        <a href="#quote" class="btn btn-b">Get Your Free Estimate</a>
+        <a href="tel:9406329186" class="btn btn-o">☎ 940-632-9186</a>
+      </div>
+    </div>
+    <div class="hero-vis">
+      <div class="ph"><span>◈ Sharp hero photo — a clean finished project</span></div>
+      <div class="float"><b>Since 2020</b><small>Locally owned &amp; operated</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>100%</b><span>Custom-built projects</span></div>
+    <div class="stat"><b>4</b><span>Core services</span></div>
+    <div class="stat"><b>Free</b><span>No-pressure estimates</span></div>
+    <div class="stat"><b>5★</b><span>Local reputation</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sh">
+      <div class="eyebrow">Services</div>
+      <h2>What we build</h2>
+      <p>Four things, done to a high standard — each one engineered and welded to fit your property.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="card"><div class="k">▤</div><h3>Custom Fencing</h3><p>Pipe, ranch, privacy, and ornamental fencing designed for North Texas land and weather.</p></div>
+      <div class="card"><div class="k">▥</div><h3>Gates</h3><p>Driveway and entry gates — manual or automated — welded to match your fence line and last for years.</p></div>
+      <div class="card"><div class="k">▦</div><h3>Shop Buildings</h3><p>Steel shops and work buildings built for strength, storage, and everyday hard use.</p></div>
+      <div class="card"><div class="k">▧</div><h3>Pickleball Courts</h3><p>Complete court builds with fencing and finish work — our fastest-growing service.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sh">
+      <div class="eyebrow">Portfolio</div>
+      <h2>Recent work</h2>
+      <p>A sample of fences, gates, shops, and courts built across the region.</p>
+    </div>
+    <div class="wlay">
+      <div class="ph tall"><span>◈ Large featured project photo</span></div>
+      <div class="wcol">
+        <div class="ph"><span>◈ Gate photo</span></div>
+        <div class="ph"><span>◈ Shop photo</span></div>
+        <div class="ph"><span>◈ Court photo</span></div>
+      </div>
+    </div>
+    <p style="color:#64748b;font-size:13px;margin-top:16px">Placeholder tiles — Adam's real photos will fill these.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sh">
+      <div class="eyebrow">How it works</div>
+      <h2>Simple, straightforward process</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">STEP 01</div><h3>Free Estimate</h3><p>Call or send us your project details. We'll come look and give you an honest, no-pressure quote.</p></div>
+      <div class="step"><div class="n">STEP 02</div><h3>Custom Plan</h3><p>We design and schedule the build around your property, your needs, and your budget.</p></div>
+      <div class="step"><div class="n">STEP 03</div><h3>Built to Last</h3><p>We show up on time, do the work right, and leave you with something that holds up for years.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="quote">
+  <div class="wrap">
+    <h2>Start your project today</h2>
+    <p>Free estimates. Honest work. Reliable turnaround.</p>
+    <a href="tel:9406329186" class="btn">Call 940-632-9186</a>
+    <small>Or email Adam: Adam.Sandy@icloud.com</small>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <b>Sandoval Fencing &amp; Welding, LLC</b>
+      <p style="margin-top:10px">Custom fencing, gates, shops &amp; pickleball courts across North Texas. Locally owned since 2020.</p>
+      <p style="margin-top:12px"><span class="tg">Draft 3 · Modern</span></p>
+    </div>
+    <div><h4>Contact</h4><p><a href="tel:9406329186">940-632-9186</a></p><p><a href="mailto:Adam.Sandy@icloud.com">Adam.Sandy@icloud.com</a></p><p>North Texas</p></div>
+    <div><h4>Services</h4><p>Custom Fencing</p><p>Gates</p><p>Shop Buildings</p><p>Pickleball Courts</p></div>
+  </div>
+  <div class="wrap copy">© 2026 Sandoval Fencing &amp; Welding, LLC · Rough-draft mockup prepared for review.</div>
+</footer>
+
+</body>
+</html>

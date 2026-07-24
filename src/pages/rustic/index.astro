@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import { business, services, promises, testimonial } from '../../data/content';
+
+const brandSuffix = business.name.replace(business.shortName, '').trim();
+---
+
+<Base title="Sandoval Fencing & Welding | Custom Fencing, Gates & Shops in North Texas" bodyClass="bg-rus-cream text-rus-ink">
+  <header class="sticky top-0 z-40 bg-rus-cream border-b border-rus-line">
+    <div class="max-w-[1120px] mx-auto px-[26px] flex items-center justify-between h-20">
+      <div class="flex items-center gap-[13px]">
+        <div class="w-12 h-12 border-2 border-rus-green rounded-full grid place-items-center text-rus-green font-serif font-bold text-[22px]">
+          {business.shortName.charAt(0)}
+        </div>
+        <div>
+          <b class="font-serif text-[20px] tracking-[.02em] block leading-[1.05]">{business.shortName}</b>
+          <span class="text-[10.5px] tracking-[.28em] uppercase text-rus-rust">{brandSuffix}</span>
+        </div>
+      </div>
+      <nav class="hidden min-[841px]:flex gap-7 items-center">
+        <a href="#services" class="text-[14.5px] font-semibold text-[#42392c] hover:text-rus-rust">Services</a>
+        <a href="#work" class="text-[14.5px] font-semibold text-[#42392c] hover:text-rus-rust">Our Work</a>
+        <a href="#values" class="text-[14.5px] font-semibold text-[#42392c] hover:text-rus-rust">Our Promise</a>
+        <a href={business.phoneHref} class="text-rus-green font-bold font-serif">{business.phone}</a>
+        <a
+          href="#quote"
+          class="inline-block bg-rus-rust text-white font-bold text-[15px] tracking-[.02em] rounded-[2px] border-2 border-rus-rust px-[22px] py-[11px] transition-colors duration-200 hover:bg-rus-rust-d hover:border-rus-rust-d"
+        >
+          Free Estimate
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="bg-rus-sand relative overflow-hidden">
+    <div class="max-w-[1120px] mx-auto px-[26px] grid grid-cols-1 min-[841px]:grid-cols-[1.05fr_.95fr] gap-8 min-[841px]:gap-[46px] items-center py-20">
+      <div>
+        <span class="inline-block bg-rus-green text-[#f3ead6] text-xs tracking-[.16em] uppercase px-[15px] py-[7px] rounded-[2px] mb-5">
+          Family-run in {business.area} · Since {business.since}
+        </span>
+        <h1 class="font-serif font-bold leading-[1.18] text-[clamp(34px,5.4vw,54px)] text-rus-ink">
+          Quality craftsmanship, <em class="text-rus-rust italic">honest work,</em> reliable turnaround.
+        </h1>
+        <p class="text-[18.5px] text-rus-muted mt-5 mb-[30px] max-w-[520px]">
+          {business.tagline}
+        </p>
+        <div class="flex gap-[14px] flex-wrap">
+          <a
+            href="#quote"
+            class="inline-block bg-rus-rust text-white font-bold text-[15px] tracking-[.02em] rounded-[2px] border-2 border-rus-rust px-8 py-[15px] transition-colors duration-200 hover:bg-rus-rust-d hover:border-rus-rust-d"
+          >
+            Request a Free Estimate
+          </a>
+          <a
+            href={business.phoneHref}
+            class="inline-block bg-transparent text-rus-green font-bold text-[15px] tracking-[.02em] rounded-[2px] border-2 border-rus-green px-8 py-[15px] transition-colors duration-200 hover:bg-rus-green hover:text-white"
+          >
+            Call {business.owner}
+          </a>
+        </div>
+      </div>
+      <div class="relative border border-rus-line rounded-[3px] overflow-hidden grid place-items-center aspect-[16/10] min-[841px]:aspect-[4/5] bg-[repeating-linear-gradient(45deg,#e7dcc6_0_20px,#e1d4ba_20px_40px)]">
+        <span class="text-[#9a8f78] text-[13px] font-semibold text-center px-[14px]">◈ Warm hero photo — finished fence or ranch gate at golden hour</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-20">
+    <div class="max-w-[1120px] mx-auto px-[26px]">
+      <div class="text-center max-w-[660px] mx-auto">
+        <div class="text-rus-rust font-bold tracking-[.2em] uppercase text-[12.5px] mb-3">What We Do</div>
+        <h2 class="font-serif font-bold leading-[1.18] text-[clamp(28px,4vw,40px)] text-rus-ink">Craftsmanship for Every Corner of Your Property</h2>
+        <p class="text-rus-muted mt-3 text-[17px]">Four things we do well — each one custom-built, never cookie-cutter.</p>
+      </div>
+      <div class="mt-10 border-t border-rus-line">
+        {services.map((service, i) => (
+          <div class="grid grid-cols-[46px_1fr] sm:grid-cols-[60px_1fr_auto] gap-4 sm:gap-6 items-center py-[26px] px-1 border-b border-rus-line transition-colors duration-200 hover:bg-rus-sand">
+            <div class="font-serif text-[30px] text-rus-gold font-bold">{String(i + 1).padStart(2, '0')}</div>
+            <div>
+              <h3 class="font-serif text-[22px] font-bold mb-1 text-rus-ink">{service.title}</h3>
+              <p class="text-rus-muted text-[15px] m-0">{service.blurb}</p>
+            </div>
+            <div class="hidden sm:block text-rus-green font-bold text-sm whitespace-nowrap">Get a quote →</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="bg-rus-green text-[#f2ead9] py-20">
+    <div class="max-w-[1120px] mx-auto px-[26px]">
+      <div class="text-center max-w-[660px] mx-auto">
+        <div class="text-rus-gold font-bold tracking-[.2em] uppercase text-[12.5px] mb-3">Our Work</div>
+        <h2 class="font-serif font-bold leading-[1.18] text-[clamp(28px,4vw,40px)] text-white">See What We've Built</h2>
+        <p class="text-[#cfd8c9] mt-3 text-[17px]">Real projects, real craftsmanship — right here in {business.area}.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
+        {[
+          '◈ Fence project',
+          '◈ Custom gate',
+          '◈ Shop building',
+          '◈ Pickleball court',
+          '◈ Ranch fencing',
+          '◈ Detail / weld work',
+        ].map((label) => (
+          <div class="relative border border-[#4d6d55] rounded-[3px] overflow-hidden grid place-items-center aspect-square bg-[repeating-linear-gradient(45deg,#42624a_0_20px,#3a5742_20px_40px)]">
+            <span class="text-[#9fb3a4] text-[13px] font-semibold text-center px-[14px]">{label}</span>
+          </div>
+        ))}
+      </div>
+      <p class="text-[#9fb3a4] text-[13px] mt-4 text-center">Placeholder tiles — {business.owner}'s real job photos go here.</p>
+    </div>
+  </section>
+
+  <section id="values" class="py-20">
+    <div class="max-w-[1120px] mx-auto px-[26px]">
+      <div class="text-center max-w-[660px] mx-auto">
+        <div class="text-rus-rust font-bold tracking-[.2em] uppercase text-[12.5px] mb-3">Our Promise</div>
+        <h2 class="font-serif font-bold leading-[1.18] text-[clamp(28px,4vw,40px)] text-rus-ink">Why Neighbors Trust {business.shortName}</h2>
+      </div>
+      <div class="grid grid-cols-1 min-[721px]:grid-cols-3 gap-[22px] mt-11">
+        {promises.map((item, i) => (
+          <div class="bg-white border border-rus-line rounded-[4px] px-[26px] py-8 text-center">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-rus-sand text-rus-rust grid place-items-center text-2xl">
+              {['✉', '✓', '✦'][i] ?? '✦'}
+            </div>
+            <h3 class="font-serif text-xl font-bold mb-2 text-rus-ink">{item.title}</h3>
+            <p class="text-rus-muted text-[15px]">{item.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-rus-sand text-center py-20">
+    <div class="max-w-[1120px] mx-auto px-[26px]">
+      <div class="text-rus-gold text-[22px] tracking-[3px] mb-5">★★★★★</div>
+      <blockquote class="font-serif italic text-rus-ink max-w-[820px] mx-auto leading-[1.4] text-[clamp(22px,3.2vw,30px)]">
+        "{testimonial.quote}"
+      </blockquote>
+      <cite class="block mt-[22px] not-italic text-rus-muted font-semibold text-[15px]">— {testimonial.cite}</cite>
+      {testimonial.sample && (
+        <div class="mt-2 text-[12.5px] text-[#a99]">(Sample testimonial — we'll swap in {business.owner}'s real Google reviews)</div>
+      )}
+    </div>
+  </section>
+
+  <section id="quote" class="bg-rus-ink text-[#f3ead6] text-center py-20">
+    <div class="max-w-[1120px] mx-auto px-[26px]">
+      <h2 class="font-serif font-bold text-white text-[clamp(26px,4vw,40px)]">Let's Build Something That Lasts</h2>
+      <p class="text-[#c9bfad] my-[14px] mb-7 text-lg">Free, no-pressure estimates. Reach {business.owner} directly.</p>
+      <a
+        href={business.phoneHref}
+        class="inline-block bg-rus-rust text-white font-bold text-[15px] tracking-[.02em] rounded-[2px] border-2 border-rus-rust px-8 py-[15px] transition-colors duration-200 hover:bg-rus-rust-d hover:border-rus-rust-d"
+      >
+        Call {business.phone}
+      </a>
+      <div class="mt-[18px] text-sm text-[#a89e88]">
+        Email: <a href={business.emailHref} class="hover:text-rus-gold">{business.email}</a> · Serving {business.area}
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#211d17] text-[#a89e88] py-11 pb-[26px] text-sm">
+    <div class="max-w-[1120px] mx-auto px-[26px] flex flex-wrap justify-between gap-6">
+      <div class="max-w-[300px]">
+        <b class="text-[#f3ead6] font-serif text-lg">{business.legalName}</b>
+        <p class="mt-[10px]">Custom fencing, gates, shops &amp; pickleball courts. Family-run in {business.area} since {business.since}.</p>
+        <p class="mt-3">
+          <span class="inline-block bg-[rgba(200,162,74,.18)] text-rus-gold text-[11px] font-bold tracking-[.14em] uppercase px-3 py-[5px] rounded-full">Draft 2 · Rustic</span>
+        </p>
+      </div>
+      <div>
+        <h4 class="text-[#f3ead6] uppercase tracking-[.12em] text-xs mb-[10px]">Contact</h4>
+        <p><a href={business.phoneHref} class="text-[#d8ccb2] hover:text-rus-gold">{business.phone}</a></p>
+        <p><a href={business.emailHref} class="text-[#d8ccb2] hover:text-rus-gold">{business.email}</a></p>
+        <p>{business.area}</p>
+      </div>
+      <div>
+        <h4 class="text-[#f3ead6] uppercase tracking-[.12em] text-xs mb-[10px]">Services</h4>
+        {services.map((service) => <p>{service.title}</p>)}
+      </div>
+    </div>
+    <div class="max-w-[1120px] mx-auto px-[26px] border-t border-[#3a3327] mt-[30px] pt-[18px] text-[12.5px] text-[#7a7160]">
+      <p>© {business.since === 2020 ? '2026' : '2026'} {business.legalName} · Rough-draft mockup prepared for review.</p>
+      <p class="mt-2">
+        <a href={import.meta.env.BASE_URL} class="text-[#d8ccb2] hover:text-rus-gold">Compare all three designs →</a>
+      </p>
+    </div>
+  </footer>
+</Base>

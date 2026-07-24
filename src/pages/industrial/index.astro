@@ -1,0 +1,159 @@
+---
+import Base from '../../layouts/Base.astro';
+import { business, services, promises } from '../../data/content';
+
+const svcIcons = ['▤', '▥', '▦', '▧'];
+---
+<Base title="Sandoval Fencing & Welding — Custom Fencing, Gates, Shops & Pickleball Courts | North Texas" bodyClass="bg-ind-paper text-ind-ink">
+
+  <header class="bg-ind-ink sticky top-0 z-50 border-b border-ind-line">
+    <div class="max-w-[1140px] mx-auto px-6 flex items-center justify-between h-[74px]">
+      <div class="flex items-center gap-3 text-white">
+        <div class="w-[42px] h-[42px] bg-ind-amber rounded-[5px] grid place-items-center font-black text-[#1a1a1a] text-xl -skew-x-6">S</div>
+        <div>
+          <b class="text-[18px] tracking-[.02em] leading-none block">SANDOVAL</b>
+          <span class="block text-[11px] text-ind-amber tracking-[.22em] uppercase mt-[3px]">Fencing &amp; Welding</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-[30px] items-center">
+        <a href="#services" class="text-[#d7dce2] text-sm font-semibold tracking-[.03em] hover:text-ind-amber">Services</a>
+        <a href="#work" class="text-[#d7dce2] text-sm font-semibold tracking-[.03em] hover:text-ind-amber">Our Work</a>
+        <a href="#why" class="text-[#d7dce2] text-sm font-semibold tracking-[.03em] hover:text-ind-amber">Why Us</a>
+        <a href="#quote" class="text-[#d7dce2] text-sm font-semibold tracking-[.03em] hover:text-ind-amber">Free Estimate</a>
+        <a href={business.phoneHref} class="text-white font-extrabold text-sm tracking-[.03em] hover:text-ind-amber">&#9742; {business.phone}</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="relative text-white pt-[110px] pb-[100px] bg-[linear-gradient(rgba(15,17,22,.82),rgba(15,17,22,.9)),repeating-linear-gradient(135deg,#2a323c_0_40px,#252c35_40px_80px)]">
+    <div class="max-w-[1140px] mx-auto px-6">
+      <div class="text-ind-amber font-bold tracking-[.2em] uppercase text-[13px] mb-[18px]">Serving {business.area} since {business.since}</div>
+      <h1 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-[clamp(34px,6vw,60px)]">Built Strong.<br><em class="text-ind-amber not-italic">Built to Last.</em></h1>
+      <p class="text-[19px] text-[#c7cdd6] max-w-[620px] my-[22px] mb-[34px]">{business.tagline}</p>
+      <div class="flex gap-[14px] flex-wrap">
+        <a href="#quote" class="inline-block bg-ind-amber text-[#1a1a1a] font-extrabold px-[30px] py-[15px] rounded uppercase tracking-[.04em] text-sm border-2 border-ind-amber transition hover:bg-ind-amber-d hover:border-ind-amber-d">Get a Free Estimate</a>
+        <a href={business.phoneHref} class="inline-block bg-transparent text-white border-2 border-white/35 font-extrabold px-[30px] py-[15px] rounded uppercase tracking-[.04em] text-sm transition hover:border-ind-amber hover:text-ind-amber">Call {business.phone}</a>
+      </div>
+      <div class="mt-4 text-ind-muted text-sm tracking-[.05em]">Quality craftsmanship &bull; Honest communication &bull; Reliable scheduling</div>
+    </div>
+  </section>
+
+  <div class="bg-ind-steel border-t border-b border-ind-line">
+    <div class="max-w-[1140px] mx-auto px-6 flex flex-wrap justify-between gap-5 py-[22px]">
+      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Locally owned &amp; operated</div>
+      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Custom-built for every job</div>
+      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Free, no-pressure estimates</div>
+      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Est. {business.since}</div>
+    </div>
+  </div>
+
+  <section id="services" class="py-[84px]">
+    <div class="max-w-[1140px] mx-auto px-6">
+      <div>
+        <div class="text-ind-amber-d font-extrabold tracking-[.18em] uppercase text-[13px] mb-3">What We Build</div>
+        <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-ind-steel text-[clamp(28px,4vw,42px)]">Our Services</h2>
+        <p class="text-[#5a6673] max-w-[640px] mt-[14px] text-[17px]">From property fencing to full shop buildings, every project is custom-fabricated to fit your land, your needs, and your budget.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[18px] mt-[46px]">
+        {services.map((svc, i) => (
+          <div class="bg-white border border-[#e4e7ec] border-t-4 border-t-ind-amber rounded-md p-[30px_24px] transition hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(20,23,28,.12)]">
+            <div class="w-[46px] h-[46px] bg-ind-ink text-ind-amber rounded-md grid place-items-center text-[22px] mb-4">{svcIcons[i % svcIcons.length]}</div>
+            <h3 class="text-[19px] text-ind-steel mb-2 font-extrabold">{svc.title}</h3>
+            <p class="text-[#66707c] text-[14.5px]">{svc.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="bg-ind-ink py-[84px]">
+    <div class="max-w-[1140px] mx-auto px-6">
+      <div>
+        <div class="text-ind-amber-d font-extrabold tracking-[.18em] uppercase text-[13px] mb-3">Our Work</div>
+        <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-white text-[clamp(28px,4vw,42px)]">Recent Projects</h2>
+        <p class="text-[#aab3bf] max-w-[640px] mt-[14px] text-[17px]">A look at fences, gates, shops, and courts we've built across the area.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-[14px] mt-11">
+        <div class="photo-ph relative rounded-md overflow-hidden border border-[#3a434f] grid place-items-center col-span-2 aspect-[16/9] md:row-span-2 md:aspect-auto">
+          <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Featured project photo<br>(large hero shot)</span>
+        </div>
+        <div class="photo-ph relative aspect-[4/3] rounded-md overflow-hidden border border-[#3a434f] grid place-items-center">
+          <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Fencing photo</span>
+        </div>
+        <div class="photo-ph relative aspect-[4/3] rounded-md overflow-hidden border border-[#3a434f] grid place-items-center">
+          <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Custom gate photo</span>
+        </div>
+        <div class="photo-ph relative aspect-[4/3] rounded-md overflow-hidden border border-[#3a434f] grid place-items-center">
+          <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Shop building photo</span>
+        </div>
+        <div class="photo-ph relative aspect-[4/3] rounded-md overflow-hidden border border-[#3a434f] grid place-items-center">
+          <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Pickleball court photo</span>
+        </div>
+      </div>
+      <p class="text-[#8b95a2] text-[13px] mt-4">&uarr; Placeholder tiles &mdash; we'll drop in {business.owner}'s real job-site photos here.</p>
+    </div>
+  </section>
+
+  <section id="why" class="py-[84px]">
+    <div class="max-w-[1140px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-[30px] md:gap-[50px] items-center">
+      <div>
+        <div class="text-ind-amber-d font-extrabold tracking-[.18em] uppercase text-[13px] mb-3">Why {business.shortName}</div>
+        <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-ind-steel text-[clamp(26px,4vw,38px)] mb-2">Honest Work You Can Count On</h2>
+        <ul class="list-none">
+          {promises.map((p, i) => (
+            <li class="flex gap-[14px] py-[14px] border-b border-[#e4e7ec]">
+              <span class="flex-none w-[30px] h-[30px] bg-ind-amber text-[#1a1a1a] rounded-full grid place-items-center font-black">{i + 1}</span>
+              <div>
+                <b class="block text-ind-steel text-[16px]">{p.title}</b>
+                <p class="text-[#66707c] text-[14.5px] m-0">{p.blurb}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="photo-ph relative aspect-[5/4] rounded-md overflow-hidden border border-[#3a434f] grid place-items-center">
+        <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Photo of {business.owner} / crew on the job</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote" class="bg-ind-amber text-[#1a1a1a] text-center py-[84px]">
+    <div class="max-w-[1140px] mx-auto px-6">
+      <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-[clamp(26px,4vw,40px)]">Ready to Start Your Project?</h2>
+      <p class="text-[18px] my-[14px] mb-[26px] font-semibold">Get a free, no-obligation estimate today.</p>
+      <a href={business.phoneHref} class="inline-block bg-ind-ink text-white font-extrabold px-[30px] py-[15px] rounded uppercase tracking-[.04em] text-sm border-2 border-ind-ink transition hover:bg-black hover:border-black">Call {business.phone}</a>
+      <div class="mt-5 text-[13px] font-bold opacity-70">Or drop in an estimate request form + email: <a href={business.emailHref}>{business.email}</a></div>
+    </div>
+  </section>
+
+  <footer class="bg-ind-ink text-[#aab3bf] pt-[50px] pb-[30px]">
+    <div class="max-w-[1140px] mx-auto px-6 flex flex-wrap justify-between gap-[26px]">
+      <div class="max-w-[300px]">
+        <div class="flex items-center gap-3 mb-[14px]">
+          <div class="w-[42px] h-[42px] bg-ind-amber rounded-[5px] grid place-items-center font-black text-[#1a1a1a] text-xl -skew-x-6">S</div>
+          <div>
+            <b class="text-[18px] tracking-[.02em] leading-none block text-white">SANDOVAL</b>
+            <span class="block text-[11px] text-ind-amber tracking-[.22em] uppercase mt-[3px]">Fencing &amp; Welding</span>
+          </div>
+        </div>
+        <p class="text-sm my-1">{services.map((s) => s.title).join(', ')} across {business.area}. Locally owned since {business.since}.</p>
+        <p class="text-sm my-1 mt-3"><span class="inline-block bg-[rgba(245,166,35,.15)] text-ind-amber text-[11px] font-extrabold tracking-[.15em] uppercase px-[12px] py-[5px] rounded-full border border-[rgba(245,166,35,.3)]">Draft 1 &middot; Industrial</span></p>
+      </div>
+      <div>
+        <h4 class="text-white uppercase tracking-[.1em] text-[13px] mb-3">Contact</h4>
+        <p class="text-sm my-1"><a href={business.phoneHref} class="text-[#d7dce2] hover:text-ind-amber">{business.phone}</a> ({business.owner})</p>
+        <p class="text-sm my-1"><a href={business.emailHref} class="text-[#d7dce2] hover:text-ind-amber">{business.email}</a></p>
+        <p class="text-sm my-1">{business.area}</p>
+      </div>
+      <div>
+        <h4 class="text-white uppercase tracking-[.1em] text-[13px] mb-3">Services</h4>
+        {services.map((svc) => <p class="text-sm my-1">{svc.title}</p>)}
+      </div>
+    </div>
+    <div class="max-w-[1140px] mx-auto px-6 border-t border-ind-line mt-[34px] pt-5 text-[13px] text-[#6b7480]">
+      &copy; {new Date().getFullYear()} {business.legalName}. All rights reserved. &middot; Rough-draft mockup prepared for review.
+      &middot; <a href={import.meta.env.BASE_URL} class="text-[#d7dce2] hover:text-ind-amber">Compare all three designs &rarr;</a>
+    </div>
+  </footer>
+
+</Base>
