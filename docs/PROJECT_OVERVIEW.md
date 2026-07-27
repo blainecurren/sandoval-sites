@@ -1,6 +1,6 @@
 # Project Overview — sandoval-sites
 
-> Human-readable current state. Updated by /ship. Last updated: 2026-07-24
+> Human-readable current state. Updated by /ship. Last updated: 2026-07-27
 
 ## Summary
 A marketing website for **Sandoval Fencing & Welding**, a family-run custom fencing, gates,
@@ -19,18 +19,33 @@ and selects one, which then becomes the production site.
 - Three variant pages (Industrial, Rustic, Modern) refactored from the original HTML mockups
 - Landing / compare page linking all three
 - Dependency source vendored for local reference (gitignored)
+- Published to public repo `blainecurren/sandoval-sites`; GitHub Pages live at
+  <https://blainecurren.github.io/sandoval-sites/>, deploying on `push: main`
+- Architecture mapped into Obsidian (`Breakdown/`, 14 notes covering all 10 source files)
+- **All six defects found by that mapping cleared** (Sprint 1 Area A, PR #1) — favicon
+  double-slash, three inconsistent copyright-year implementations, a hardcoded service count,
+  dead CSS classes, and a `Promise` type shadowing the built-in
 
 ### Next
-- `git init`, publish public repo `blainecurren/sandoval-sites`, enable GitHub Pages
-- Client picks a design → promote winner to root, drop the others
-- Real job-site photos replace placeholders
-- Estimate form wired to a static-host form handler
+- **Client picks a design** → promote winner to root, drop the other two + compare page
+- Real job-site photos replace the 18 placeholder tiles
+- Estimate form wired to a handler — GitHub Pages has no server side, so this needs an
+  external service or a worker, and it is the first runtime dependency the site would take on
+- Real Google reviews replace the sample testimonial (`content.ts` → `testimonial.sample`)
+
+Tracked as Sprint 1 "Punch List" — see `Projects/sandoval-sites/Sprints/` in the vault.
 
 ## Key Decisions
-- **Astro over plain HTML** — the three variants share content; a single source of truth avoids
-  editing copy three times.
-- **Tailwind v4** — matches the existing `business-landing` repo for tooling consistency.
-- **GitHub Pages** — simplest static host for a public marketing site.
+
+Recorded as ADRs in the vault (`Projects/sandoval-sites/ADR/`):
+
+| ADR | Decision |
+|---|---|
+| ADR-001 | Pin Vite to 7.3.5 via npm `overrides` — Astro 6.4.7 floats Vite to 8.x (rolldown), whose oxc resolver breaks `@tailwindcss/vite`. Requires `package-lock.json` stay committed. Binds `business-landing` identically. |
+| ADR-002 | Initial stack — Astro over plain HTML (three variants share one content source), Tailwind v4 CSS-first `@theme` (namespaced palettes are the isolation mechanism), GitHub Pages (static, OIDC deploy, no stored secrets). |
+
+Still to decide: the estimate-form provider (see ADR-002 → Alternatives, which flags the host
+choice as the thing to revisit if that proves painful).
 
 ## Contact / Business Facts
 - Owner: Adam · Phone: 940-632-9186 · Email: Adam.Sandy@icloud.com · Area: North Texas
