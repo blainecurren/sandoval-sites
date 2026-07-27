@@ -24,6 +24,32 @@ Set TODAY = YYYY-MM-DD, NOW = HH:MM
 
 ---
 
+## Step 0.5 — Vault Access (filesystem, not MCP)
+
+No Obsidian MCP server is configured on this machine, and none is needed — the vault is a
+plain directory. Parse `vault_path` from the config and resolve every vault-relative path
+against it:
+
+```
+VAULT         = value of `vault_path`   (e.g. /mnt/c/Users/blain/Documents/dev/Notes)
+absolute path = {VAULT}/{vault-relative path}
+```
+
+Wherever a step below names an `obsidian_*` tool, use the filesystem equivalent instead:
+
+| Step text says | Actually do |
+|---|---|
+| `obsidian_get_file_contents` | Read the absolute path. A missing file means "not found" — handle it, don't error out. |
+| `obsidian_append_content` | Read + append + Write. If the file doesn't exist, Write it with the specified heading. |
+| `obsidian_list_files_in_dir` | `ls` / `find` on the absolute path |
+| `obsidian_delete_file` | `rm` the absolute path |
+| `obsidian_simple_search` | `grep -r` under `{VAULT}` |
+
+Obsidian does **not** need to be running. It picks up external file changes when it regains
+focus. Write LF line endings — the whole vault is LF, including on the Windows mount.
+
+---
+
 ## Step 1 — Review Changes
 ```bash
 git status
