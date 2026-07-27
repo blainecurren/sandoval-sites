@@ -15,6 +15,12 @@ export const business = {
   tagline: 'Custom fencing, gates, shop buildings, and pickleball courts — welded and installed with honest work and a reliable turnaround.',
 } as const;
 
+// Wordmark suffix — "Sandoval Fencing & Welding" → "Fencing & Welding".
+// Variants that split the logo into monogram + suffix read this instead of deriving it
+// themselves; two pages previously did it two different ways and could drift.
+// Depends on `shortName` being a leading substring of `name` — keep them in step.
+export const brandSuffix = business.name.replace(business.shortName, '').trim();
+
 export type Service = {
   id: string;
   title: string;
