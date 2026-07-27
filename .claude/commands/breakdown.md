@@ -6,7 +6,13 @@ Deep-analyze every source file and scaffold a full architecture map into Obsidia
 ```bash
 cat ~/.claude/obsidian-config.md 2>/dev/null || echo "NOT_FOUND"
 ```
-Parse: OWNER, PROJECTS. Set: PROJECT_NAME, PROJECT_PATH, TODAY.
+Parse: OWNER, PROJECTS, `vault_path`. Set: PROJECT_NAME, PROJECT_PATH, TODAY.
+
+**Vault access is filesystem, not MCP.** No Obsidian MCP server is configured and none is
+needed. Resolve every vault-relative path as `{vault_path}/{path}` and use ordinary file
+tools: Read for `obsidian_get_file_contents`, Read+append+Write for `obsidian_append_content`,
+`ls`/`find` for `obsidian_list_files_in_dir`. Obsidian does not need to be running.
+Write LF line endings.
 
 ## Step 1 — Identify Project
 ```bash
@@ -63,4 +69,8 @@ Vault: {PROJECT_PATH}/Breakdown/INDEX.md
 - Read every file. No skipping.
 - For large files (>300 lines): use view_range in chunks.
 - If >100 source files: ask user for Full vs Core mode before starting.
-- Never write to the filesystem — only to Obsidian via MCP tools.
+- **Never write to the repo.** This command only writes into the vault, under
+  `{vault_path}/{PROJECT_PATH}/Breakdown/`. The repo is read-only here.
+- Wikilinks must be vault-absolute (`[[Projects/{name}/Breakdown/INDEX|INDEX]]`) or
+  same-folder (`[[Data-Flow]]`). **Obsidian does not resolve `../` in wikilinks** — a
+  `[[../INDEX]]` renders as a broken link.

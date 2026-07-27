@@ -32,7 +32,7 @@ const icons = ['▤', '▥', '▦', '▧'];
     </div>
   </header>
 
-  <section class="hero">
+  <section>
     <div class="max-w-[1160px] mx-auto px-[26px] grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center pt-[60px] pb-[60px] md:pt-[90px] md:pb-[80px]">
       <div>
         <span class="inline-flex items-center gap-2 bg-mod-light text-mod-slate text-[13px] font-semibold px-[14px] py-[7px] rounded-[30px] mb-6">
@@ -61,10 +61,10 @@ const icons = ['▤', '▥', '▦', '▧'];
 
   <div class="border-t border-b border-mod-line bg-mod-light">
     <div class="max-w-[1160px] mx-auto px-[26px] grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-5 py-[34px]">
-      <div class="stat"><b class="block text-[30px] font-extrabold tracking-[-0.03em]">100%</b><span class="text-mod-grey text-sm font-semibold">Custom-built projects</span></div>
-      <div class="stat"><b class="block text-[30px] font-extrabold tracking-[-0.03em]">4</b><span class="text-mod-grey text-sm font-semibold">Core services</span></div>
-      <div class="stat"><b class="block text-[30px] font-extrabold tracking-[-0.03em]">Free</b><span class="text-mod-grey text-sm font-semibold">No-pressure estimates</span></div>
-      <div class="stat"><b class="block text-[30px] font-extrabold tracking-[-0.03em]">5★</b><span class="text-mod-grey text-sm font-semibold">Local reputation</span></div>
+      <div><b class="block text-[30px] font-extrabold tracking-[-0.03em]">100%</b><span class="text-mod-grey text-sm font-semibold">Custom-built projects</span></div>
+      <div><b class="block text-[30px] font-extrabold tracking-[-0.03em]">{services.length}</b><span class="text-mod-grey text-sm font-semibold">Core services</span></div>
+      <div><b class="block text-[30px] font-extrabold tracking-[-0.03em]">Free</b><span class="text-mod-grey text-sm font-semibold">No-pressure estimates</span></div>
+      <div><b class="block text-[30px] font-extrabold tracking-[-0.03em]">5★</b><span class="text-mod-grey text-sm font-semibold">Local reputation</span></div>
     </div>
   </div>
 
@@ -172,7 +172,7 @@ const icons = ['▤', '▥', '▦', '▧'];
       </div>
     </div>
     <div class="max-w-[1160px] mx-auto px-[26px] border-t border-mod-slate mt-9 pt-5 text-[13px] text-mod-grey">
-      © 2026 {business.legalName} · Rough-draft mockup prepared for review.
+      © {new Date().getFullYear()} {business.legalName} · Rough-draft mockup prepared for review.
       <a href={import.meta.env.BASE_URL} class="text-[#cbd5e1] hover:text-white underline ml-2">Compare all three designs →</a>
     </div>
   </footer>

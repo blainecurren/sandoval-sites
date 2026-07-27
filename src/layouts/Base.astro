@@ -9,6 +9,9 @@ interface Props {
   bodyClass?: string;
 }
 
+// BASE_URL carries a trailing slash; trim it so `${base}/favicon.svg` is clean.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const { title, description = business.tagline, bodyClass = '' } = Astro.props;
 ---
 
@@ -20,7 +23,7 @@ const { title, description = business.tagline, bodyClass = '' } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
   </head>
   <body class={bodyClass}>
     <slot />

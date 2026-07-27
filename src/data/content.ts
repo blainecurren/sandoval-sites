@@ -44,12 +44,14 @@ export const services: Service[] = [
   },
 ];
 
-export type Promise = {
+// Named `Commitment`, not `Promise` — `Promise` would shadow the built-in type
+// inside this module and silently break any future `Promise<T>` annotation here.
+export type Commitment = {
   title: string;
   blurb: string;
 };
 
-export const promises: Promise[] = [
+export const promises: Commitment[] = [
   {
     title: 'Honest Communication',
     blurb: 'Straight answers and no surprises — from the first quote to the final weld.',

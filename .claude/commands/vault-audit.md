@@ -8,8 +8,30 @@ Classify each as stale (delete), migrate (move content into a managed doc), or k
 cat ~/.claude/obsidian-config.md 2>/dev/null || echo "NOT_FOUND"
 ```
 If NOT_FOUND: run /project-init first, then stop.
-Parse: OWNER, PROJECTS, SPRINTS, DEVLOG, ADR
+Parse: OWNER, PROJECTS, SPRINTS, DEVLOG, ADR, `vault_path`
 Set: PROJECT_NAME, PROJECT_PATH, JOURNAL_PATH, TODAY, NOW
+
+---
+
+## Step 0.5 — Vault Access (filesystem, not MCP)
+
+No Obsidian MCP server is configured and none is needed. Resolve every vault-relative path
+as `{vault_path}/{path}` and substitute filesystem operations for the `obsidian_*` tools
+named below:
+
+| Step text says | Actually do |
+|---|---|
+| `obsidian_list_files_in_dir` | `find` / `ls` on the absolute path |
+| `obsidian_get_file_contents` | Read the absolute path |
+| `obsidian_append_content` | Read + append + Write |
+| `obsidian_delete_file` | `rm` the absolute path — **only after** the Step 4 report is shown and the user confirms that specific file |
+
+⚠️ This command deletes files. Switching to filesystem access removes Obsidian's own
+trash/undo safety net — a `rm` here is immediate and permanent, where `obsidian_delete_file`
+routes to `.trash`. **Move approved deletions to `{vault_path}/.trash/` instead of `rm`**, so
+the existing recovery path is preserved. Never delete without the confirmed report.
+
+Obsidian does not need to be running. Write LF line endings.
 
 ---
 

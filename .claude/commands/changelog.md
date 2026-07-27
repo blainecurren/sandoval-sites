@@ -6,8 +6,13 @@ Manage CHANGELOG.md. Modes: view (default), generate, retroactive, update, entry
 ```bash
 cat ~/.claude/obsidian-config.md 2>/dev/null || echo "NOT_FOUND"
 ```
-Parse: PROJECTS, DEVLOG, SPRINTS, OWNER.
+Parse: PROJECTS, DEVLOG, SPRINTS, OWNER, `vault_path`.
 Set: PROJECT_NAME, PROJECT_PATH, JOURNAL_PATH, TODAY.
+
+**Vault access is filesystem, not MCP.** No Obsidian MCP server is configured and none is
+needed. Resolve vault-relative paths as `{vault_path}/{path}` and use ordinary file tools.
+The mirror write at the end is a plain overwrite. Obsidian does not need to be running.
+Write LF line endings.
 
 ## Step 1 — Identify Mode
 - /changelog → view
