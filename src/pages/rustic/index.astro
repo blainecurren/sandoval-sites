@@ -182,7 +182,7 @@ const brandSuffix = business.name.replace(business.shortName, '').trim();
       </div>
     </div>
     <div class="max-w-[1120px] mx-auto px-[26px] border-t border-[#3a3327] mt-[30px] pt-[18px] text-[12.5px] text-[#7a7160]">
-      <p>© {business.since === 2020 ? '2026' : '2026'} {business.legalName} · Rough-draft mockup prepared for review.</p>
+      <p>© {new Date().getFullYear()} {business.legalName} · Rough-draft mockup prepared for review.</p>
       <p class="mt-2">
         <a href={import.meta.env.BASE_URL} class="text-[#d8ccb2] hover:text-rus-gold">Compare all three designs →</a>
       </p>
