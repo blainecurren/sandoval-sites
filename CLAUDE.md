@@ -1,7 +1,7 @@
 # CLAUDE.md — sandoval-sites
 
 > AI session context. Read at the start of every Claude Code session.
-> Kept current by /ship. Last updated: 2026-07-24
+> Kept current by /ship. Last updated: 2026-07-28
 
 ## What This Project Does
 Marketing site for **Sandoval Fencing & Welding** (North Texas). Ships **three homepage
@@ -10,7 +10,7 @@ client can compare and pick one. After the client decides, the winning variant i
 to the site root and the others are dropped.
 
 ## Tech Stack
-- **Astro 6** (static output) + **Tailwind CSS v4** (via `@tailwindcss/vite`, CSS-first `@theme`)
+- **Astro 7** (static output) + **Tailwind CSS v4** (via `@tailwindcss/vite`, CSS-first `@theme`)
 - Node ≥ 22.12 · no JavaScript shipped to the browser · no external font/asset requests
 - Deploys to **GitHub Pages** at `https://blainecurren.github.io/sandoval-sites/`
 
@@ -68,11 +68,20 @@ GitHub Pages (public repo `blainecurren/sandoval-sites`). Static build via GitHu
 `push: main`. Not a PHI or Azure project — no compliance gate, no Azure deploy doctrine.
 
 ## Gotchas
-- **Vite is pinned to `7.3.5` via `overrides`.** Astro 6.4.7's range floats Vite to 8.x
-  (rolldown), whose oxc resolver breaks `@tailwindcss/vite` with
-  `Missing field tsconfigPaths`. The `overrides.vite` pin keeps the build working. Commit
-  `package-lock.json` — the pin only reproduces with the lockfile committed. (Same constraint
-  applies to `business-landing`.)
+- **CSS minifier is pinned to esbuild** via `vite.build.cssMinify: 'esbuild'` in
+  `astro.config.mjs`. Vite 8 changed the default to Lightning CSS, which *rewrites* CSS against
+  `baseline-widely-available` (chrome111/edge111/firefox114/safari16.4/ios16.4): it strips
+  `-webkit-background-clip` and `-webkit-backdrop-filter` (breaking gradient text and the Modern
+  variant's blurred sticky header on older Safari) and emits `@media (width>=40rem)` range
+  syntax that browsers below that floor ignore outright — silently dropping *all* responsive
+  styling. esbuild only minifies, so the CSS stays byte-identical to the Astro 6 output. Remove
+  the setting only if a raised browser floor is an accepted trade.
+- **The old `overrides.vite: 7.3.5` pin is gone** (was ADR-001). It existed because Vite 8's oxc
+  resolver broke `@tailwindcss/vite` with `Missing field tsconfigPaths`; that is fixed upstream —
+  Tailwind 4.3.1 builds clean on Vite 8.1.5. Still commit `package-lock.json` (CI runs `npm ci`).
+- **Tailwind is held at 4.3.1 deliberately.** 4.3.3 changes the default `--font-sans` stack from
+  `ui-sans-serif, system-ui` to `-apple-system, BlinkMacSystemFont, …` — a site-wide typography
+  shift. Bump it only alongside a visual review.
 
 ## Coding Conventions
 - Content lives in `content.ts`, never hardcoded in pages.

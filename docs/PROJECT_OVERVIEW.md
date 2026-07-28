@@ -1,6 +1,6 @@
 # Project Overview — sandoval-sites
 
-> Human-readable current state. Updated by /ship. Last updated: 2026-07-27
+> Human-readable current state. Updated by /ship. Last updated: 2026-07-28
 
 ## Summary
 A marketing website for **Sandoval Fencing & Welding**, a family-run custom fencing, gates,
@@ -10,7 +10,7 @@ and selects one, which then becomes the production site.
 
 ## Status
 - **Phase:** initial build / client design review
-- **Stack:** Astro 6 + Tailwind v4, static, GitHub Pages
+- **Stack:** Astro 7 + Tailwind v4, static, GitHub Pages
 - **Classification:** personal (public marketing site — no PHI, no sensitive data)
 
 ### Done
@@ -41,7 +41,8 @@ Recorded as ADRs in the vault (`Projects/sandoval-sites/ADR/`):
 
 | ADR | Decision |
 |---|---|
-| ADR-001 | Pin Vite to 7.3.5 via npm `overrides` — Astro 6.4.7 floats Vite to 8.x (rolldown), whose oxc resolver breaks `@tailwindcss/vite`. Requires `package-lock.json` stay committed. Binds `business-landing` identically. |
+| ADR-001 | ~~Pin Vite to 7.3.5 via npm `overrides`~~ — **superseded** by the Astro 7 upgrade. The oxc resolver bug it worked around is fixed upstream: Tailwind 4.3.1 builds clean on Vite 8.1.5, so the pin was removed. `package-lock.json` still stays committed (CI runs `npm ci`). Note the original "binds `business-landing` identically" claim was inaccurate — that repo never carried the `overrides` pin, only a lockfile. |
+| ADR-003 | Pin the CSS minifier to esbuild (`vite.build.cssMinify: 'esbuild'`). Vite 8 defaults to Lightning CSS, which rewrites CSS against a chrome111/safari16.4/ios16.4 floor — stripping `-webkit-` prefixes and emitting `@media (width>=40rem)` range syntax that older browsers ignore entirely, silently dropping all responsive styling. Holding esbuild keeps output byte-identical to Astro 6 and preserves the wider browser support a public marketing site needs. |
 | ADR-002 | Initial stack — Astro over plain HTML (three variants share one content source), Tailwind v4 CSS-first `@theme` (namespaced palettes are the isolation mechanism), GitHub Pages (static, OIDC deploy, no stored secrets). |
 
 Still to decide: the estimate-form provider (see ADR-002 → Alternatives, which flags the host
