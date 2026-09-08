@@ -2,9 +2,20 @@
 
 All notable changes to sandoval-sites. Newest first.
 
-## Unreleased — 2026-07-24
+## Unreleased
 
-### Added
+### Changed — 2026-09-08
+- **Client chose the Industrial design.** Promoted `src/pages/industrial/index.astro` to the
+  site root (`/`); removed the draft badge and the "Rough-draft mockup prepared for review"
+  footer note.
+
+### Removed — 2026-09-08
+- Rustic and Modern variant pages, and the landing / compare page they were reached from.
+- Now-unused content exports: `brandSuffix`, `testimonial`, `Variant`, `variants`.
+- Theme tokens for the dropped palettes (`rus-*`, `mod-*`), the rustic-only `--font-serif`,
+  and `--color-ind-panel` (never used by any page).
+
+### Added — 2026-07-24
 - Initial Astro 6 + Tailwind v4 scaffold (mirrors the `business-landing` house pattern).
 - Single-source content model (`src/data/content.ts`): business facts, services, promises,
   testimonial, and the variant list.

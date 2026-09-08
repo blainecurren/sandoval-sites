@@ -1,5 +1,5 @@
-// Single source of truth for every variant.
-// Edit business facts, services, or contact details HERE — all three designs read from this file.
+// Single source of truth for the site content.
+// Edit business facts, services, or contact details HERE — the site reads them from this file.
 
 export const business = {
   name: 'Sandoval Fencing & Welding',
@@ -14,12 +14,6 @@ export const business = {
   emailHref: 'mailto:Adam.Sandy@icloud.com',
   tagline: 'Custom fencing, gates, shop buildings, and pickleball courts — welded and installed with honest work and a reliable turnaround.',
 } as const;
-
-// Wordmark suffix — "Sandoval Fencing & Welding" → "Fencing & Welding".
-// Variants that split the logo into monogram + suffix read this instead of deriving it
-// themselves; two pages previously did it two different ways and could drift.
-// Depends on `shortName` being a leading substring of `name` — keep them in step.
-export const brandSuffix = business.name.replace(business.shortName, '').trim();
 
 export type Service = {
   id: string;
@@ -70,25 +64,4 @@ export const promises: Commitment[] = [
     title: 'Custom Solutions',
     blurb: 'Every project is built to fit your property, not forced into a template.',
   },
-];
-
-// Sample testimonial — swap for real Google reviews before launch.
-export const testimonial = {
-  quote:
-    "Adam built our ranch gate and it turned out better than we imagined. Fair price, showed up on time, and the work is rock solid.",
-  cite: 'A happy customer, North Texas',
-  sample: true,
-} as const;
-
-// The three design directions, used by the landing/compare page.
-export type Variant = {
-  slug: 'industrial' | 'rustic' | 'modern';
-  name: string;
-  desc: string;
-};
-
-export const variants: Variant[] = [
-  { slug: 'industrial', name: 'Industrial', desc: 'Dark steel palette, amber accents, bold uppercase. Rugged and work-focused.' },
-  { slug: 'rustic', name: 'Rustic', desc: 'Warm, ranch-country feel for the North Texas property market.' },
-  { slug: 'modern', name: 'Modern', desc: 'Clean, contemporary metalwork presentation.' },
 ];
