@@ -1,0 +1,13 @@
+# Data classification for sandoval-sites. See docs/DATA-CLASSIFICATION.md.
+data_classification: personal
+classification_reason: >
+  Public marketing website for a client's fencing and welding business. Static Astro
+  site on GitHub Pages, no backend, no ingestion path, no health data and no HCHB or
+  FHIR connection. The only personal data is the client's own business phone and
+  email, which they publish on the site deliberately. Baseline guardrails only.
+
+# The vault has recorded this repo as `personal` since 2026-07-27, but the tier lived
+# only in Obsidian (`Projects/sandoval-sites/_DOMAIN.md`), which no CI reads. Declared
+# here 2026-09-08 so `check-classification.sh` has something to check.
+owner: blaine.curren@gmail.com
+created: 2026-07-24

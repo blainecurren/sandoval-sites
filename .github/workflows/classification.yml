@@ -1,0 +1,15 @@
+name: classification
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  classification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/check-classification.sh
+      - run: bash scripts/phi-canary.sh
+      - run: bash scripts/check-phi-deps.sh
