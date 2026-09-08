@@ -1,13 +1,13 @@
 # CLAUDE.md — sandoval-sites
 
 > AI session context. Read at the start of every Claude Code session.
-> Kept current by /ship. Last updated: 2026-07-24
+> Kept current by /ship. Last updated: 2026-09-08
 
 ## What This Project Does
-Marketing site for **Sandoval Fencing & Welding** (North Texas). Ships **three homepage
-design directions** — Industrial, Rustic, Modern — from a single Astro codebase so the
-client can compare and pick one. After the client decides, the winning variant is promoted
-to the site root and the others are dropped.
+Marketing site for **Sandoval Fencing & Welding** (North Texas), built in Astro and deployed
+static to GitHub Pages. Three design directions (Industrial, Rustic, Modern) were built for
+the client to compare; **he chose Industrial on 2026-09-08**, and it was promoted to the site
+root. Rustic, Modern, and the compare page are gone — recoverable from git history if needed.
 
 ## Tech Stack
 - **Astro 6** (static output) + **Tailwind CSS v4** (via `@tailwindcss/vite`, CSS-first `@theme`)
@@ -17,14 +17,11 @@ to the site root and the others are dropped.
 ## Project Structure
 ```
 src/
-  data/content.ts        # SINGLE SOURCE OF TRUTH — business facts, services, promises, testimonial, variants
+  data/content.ts        # SINGLE SOURCE OF TRUTH — business facts, services, promises
   layouts/Base.astro     # shared <html> shell, meta, favicon, global.css import
-  styles/global.css      # Tailwind import + all 3 palettes as @theme tokens (ind-*, rus-*, mod-*)
+  styles/global.css      # Tailwind import + the industrial palette as @theme tokens (ind-*)
   pages/
-    index.astro          # landing / compare page (links the 3 variants)
-    industrial/index.astro
-    rustic/index.astro
-    modern/index.astro
+    index.astro          # the site — Industrial design
 public/favicon.svg
 _mockups/                # original hand-written HTML mockups (reference only)
 open-source/             # vendored dependency source (gitignored — see Vendored Source)
@@ -33,8 +30,8 @@ open-source/             # vendored dependency source (gitignored — see Vendor
 ## Key Files
 | File | Purpose |
 |---|---|
-| `src/data/content.ts` | Edit business facts / services / contact ONCE here — all variants read it |
-| `src/styles/global.css` | Tailwind v4 theme tokens for the 3 palettes |
+| `src/data/content.ts` | Edit business facts / services / contact here, never inline in the page |
+| `src/styles/global.css` | Tailwind v4 theme tokens for the industrial palette (`ind-*`) |
 | `astro.config.mjs` | `site` + `base: '/sandoval-sites'` for GitHub Pages subpath |
 | `docs/PROJECT_OVERVIEW.md` | Human-readable current state |
 
@@ -47,14 +44,12 @@ npm run preview    # preview the production build
 ```
 
 ## Architecture Notes
-- The three variants are **not** recolors — each has a distinct layout (industrial: trust bar +
-  gallery; rustic: editorial service rows + testimonial; modern: stat strip + 3-step process).
-  What they share is **content** (from `content.ts`) and the **Base shell**. Each page composes
-  its own sections.
-- Internal links must respect the Pages subpath: use `import.meta.env.BASE_URL` (trim the
-  trailing slash when concatenating, e.g. `` `${base}/industrial` ``).
-- Palette tokens are namespaced by variant (`ind-`, `rus-`, `mod-`) so one page can't bleed
-  into another. Rustic headings use `font-serif`.
+- The site is a single page (industrial layout: trust bar + gallery) composing its own
+  sections over the **Base shell**, with all copy coming from `content.ts`.
+- Internal links and asset URLs must respect the Pages subpath: use `import.meta.env.BASE_URL`
+  and trim the trailing slash when concatenating (`Base.astro` does this for the favicon).
+- Palette tokens stay namespaced `ind-*` — the `rus-*` / `mod-*` sets were dropped with their
+  variants. Any *new* token should follow the same prefix convention.
 - Photo tiles are diagonal-hatch **placeholders** — real job-site photos from Adam replace them
   before launch. The estimate CTA is currently a `tel:`/`mailto:` link (no form handler yet).
 
