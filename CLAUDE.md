@@ -11,7 +11,8 @@ root. Rustic, Modern, and the compare page are gone — recoverable from git his
 
 ## Tech Stack
 - **Astro 6** (static output) + **Tailwind CSS v4** (via `@tailwindcss/vite`, CSS-first `@theme`)
-- Node ≥ 22.12 · no JavaScript shipped to the browser · no external font/asset requests
+- Node ≥ 22.12 · no JavaScript bundles or `<script>` tags — the only JS is a one-line inline
+  `onclick` on each mobile menu link that closes the menu on tap · no external font/asset requests
 - Deploys to **GitHub Pages** at `https://blainecurren.github.io/sandoval-sites/`
 
 ## Project Structure
