@@ -18,6 +18,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Sticky header's outer height: the h-[74px] bar plus its 1px border-b. Keeps
+     #anchors landing below the header, not under it. */
+  scroll-padding-top: 75px;
 }
 
 body {
