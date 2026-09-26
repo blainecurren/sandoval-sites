@@ -53,55 +53,69 @@ const navLinks = [
     </div>
   </header>
 
-  <section class="relative text-white pt-[110px] pb-[100px] bg-[linear-gradient(rgba(15,17,22,.82),rgba(15,17,22,.9)),repeating-linear-gradient(135deg,#2a323c_0_40px,#252c35_40px_80px)]">
+  <section class="relative text-white pt-16 pb-14 md:pt-[110px] md:pb-[100px] bg-[linear-gradient(rgba(15,17,22,.82),rgba(15,17,22,.9)),repeating-linear-gradient(135deg,#2a323c_0_40px,#252c35_40px_80px)]">
     <div class="max-w-[1140px] mx-auto px-6">
       <div class="text-ind-amber font-bold tracking-[.2em] uppercase text-[13px] mb-[18px]">Serving {business.area} since {business.since}</div>
       <h1 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-[clamp(34px,6vw,60px)]">Built Strong.<br><em class="text-ind-amber not-italic">Built to Last.</em></h1>
-      <p class="text-[19px] text-[#c7cdd6] max-w-[620px] my-[22px] mb-[34px]">{business.tagline}</p>
-      <div class="flex gap-[14px] flex-wrap">
-        <a href="#quote" class="inline-block bg-ind-amber text-[#1a1a1a] font-extrabold px-[30px] py-[15px] rounded uppercase tracking-[.04em] text-sm border-2 border-ind-amber transition hover:bg-ind-amber-d hover:border-ind-amber-d">Get a Free Estimate</a>
-        <a href={business.phoneHref} class="inline-block bg-transparent text-white border-2 border-white/35 font-extrabold px-[30px] py-[15px] rounded uppercase tracking-[.04em] text-sm transition hover:border-ind-amber hover:text-ind-amber">Call {business.phone}</a>
+      <p class="text-[17px] md:text-[19px] text-[#c7cdd6] max-w-[620px] my-[18px] mb-7 md:my-[22px] md:mb-[34px]">{business.tagline}</p>
+      <div class="grid grid-cols-2 gap-3 md:flex md:gap-[14px] md:flex-wrap">
+        <a href="#quote" class="inline-block text-center bg-ind-amber text-[#1a1a1a] font-extrabold px-2 py-[13px] md:px-[30px] md:py-[15px] rounded uppercase tracking-[.04em] text-[13px] md:text-sm border-2 border-ind-amber transition hover:bg-ind-amber-d hover:border-ind-amber-d"><span class="md:hidden">Free Estimate</span><span class="hidden md:inline">Get a Free Estimate</span></a>
+        <a href={business.phoneHref} class="inline-block text-center bg-transparent text-white border-2 border-white/35 font-extrabold px-2 py-[13px] md:px-[30px] md:py-[15px] rounded uppercase tracking-[.04em] text-[13px] md:text-sm transition hover:border-ind-amber hover:text-ind-amber"><span class="md:hidden">Call Now</span><span class="hidden md:inline">Call {business.phone}</span></a>
       </div>
-      <div class="mt-4 text-ind-muted text-sm tracking-[.05em]">Quality craftsmanship &bull; Honest communication &bull; Reliable scheduling</div>
+      <div class="hidden md:block mt-4 text-ind-muted text-sm tracking-[.05em]">Quality craftsmanship &bull; Honest communication &bull; Reliable scheduling</div>
     </div>
   </section>
 
   <div class="bg-ind-steel border-t border-b border-ind-line">
-    <div class="max-w-[1140px] mx-auto px-6 flex flex-wrap justify-between gap-5 py-[22px]">
-      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Locally owned &amp; operated</div>
-      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Custom-built for every job</div>
-      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Free, no-pressure estimates</div>
-      <div class="text-white font-bold flex items-center gap-[10px] text-[15px]"><span class="text-ind-amber text-xl">&#10003;</span> Est. {business.since}</div>
+    <div class="max-w-[1140px] mx-auto px-6 grid grid-cols-2 gap-x-4 gap-y-3 py-4 md:flex md:flex-wrap md:justify-between md:gap-5 md:py-[22px]">
+      <div class="text-white font-bold flex items-center gap-2 md:gap-[10px] text-[13px] md:text-[15px]"><span class="text-ind-amber text-lg md:text-xl">&#10003;</span> Locally owned &amp; operated</div>
+      <div class="text-white font-bold flex items-center gap-2 md:gap-[10px] text-[13px] md:text-[15px]"><span class="text-ind-amber text-lg md:text-xl">&#10003;</span> Custom-built for every job</div>
+      <div class="text-white font-bold flex items-center gap-2 md:gap-[10px] text-[13px] md:text-[15px]"><span class="text-ind-amber text-lg md:text-xl">&#10003;</span> Free, no-pressure estimates</div>
+      <div class="text-white font-bold flex items-center gap-2 md:gap-[10px] text-[13px] md:text-[15px]"><span class="text-ind-amber text-lg md:text-xl">&#10003;</span> Est. {business.since}</div>
     </div>
   </div>
 
-  <section id="services" class="py-[84px]">
+  <section id="services" class="py-14 md:py-[84px]">
     <div class="max-w-[1140px] mx-auto px-6">
       <div>
         <div class="text-ind-amber-d font-extrabold tracking-[.18em] uppercase text-[13px] mb-3">What We Build</div>
         <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-ind-steel text-[clamp(28px,4vw,42px)]">Our Services</h2>
         <p class="text-[#5a6673] max-w-[640px] mt-[14px] text-[17px]">From property fencing to full shop buildings, every project is custom-fabricated to fit your land, your needs, and your budget.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[18px] mt-[46px]">
+      {/* Mobile: 2x2 icon + title tiles, blurb behind a native <details> tap.
+          Desktop: the original full cards. Same data, two renderings. */}
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-[18px] mt-8 md:mt-[46px] items-start md:items-stretch">
         {services.map((svc, i) => (
-          <div class="bg-white border border-[#e4e7ec] border-t-4 border-t-ind-amber rounded-md p-[30px_24px] transition hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(20,23,28,.12)]">
-            <div class="w-[46px] h-[46px] bg-ind-ink text-ind-amber rounded-md grid place-items-center text-[22px] mb-4">{svcIcons[i % svcIcons.length]}</div>
-            <h3 class="text-[19px] text-ind-steel mb-2 font-extrabold">{svc.title}</h3>
-            <p class="text-[#66707c] text-[14.5px]">{svc.blurb}</p>
+          <div class="bg-white border border-[#e4e7ec] border-t-4 border-t-ind-amber rounded-md md:p-[30px_24px] transition md:hover:-translate-y-1 md:hover:shadow-[0_14px_30px_rgba(20,23,28,.12)]">
+            <details class="group md:hidden">
+              <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer p-4 flex flex-col gap-3">
+                <span aria-hidden="true" class="w-10 h-10 bg-ind-ink text-ind-amber rounded-md grid place-items-center text-lg">{svcIcons[i % svcIcons.length]}</span>
+                <h3 class="text-[16px] leading-tight text-ind-steel font-extrabold flex justify-between items-start gap-2">
+                  {svc.title}
+                  <span aria-hidden="true" class="inline-block text-ind-amber-d text-sm transition group-open:rotate-180">&#9662;</span>
+                </h3>
+              </summary>
+              <p class="px-4 pb-4 -mt-1 text-[#66707c] text-[14px]">{svc.blurb}</p>
+            </details>
+            <div class="hidden md:block">
+              <div class="w-[46px] h-[46px] bg-ind-ink text-ind-amber rounded-md grid place-items-center text-[22px] mb-4">{svcIcons[i % svcIcons.length]}</div>
+              <h3 class="text-[19px] text-ind-steel mb-2 font-extrabold">{svc.title}</h3>
+              <p class="text-[#66707c] text-[14.5px]">{svc.blurb}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section id="work" class="bg-ind-ink py-[84px]">
+  <section id="work" class="bg-ind-ink py-14 md:py-[84px]">
     <div class="max-w-[1140px] mx-auto px-6">
       <div>
         <div class="text-ind-amber-d font-extrabold tracking-[.18em] uppercase text-[13px] mb-3">Our Work</div>
         <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-white text-[clamp(28px,4vw,42px)]">Recent Projects</h2>
         <p class="text-[#aab3bf] max-w-[640px] mt-[14px] text-[17px]">A look at fences, gates, shops, and courts we've built across the area.</p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-[14px] mt-11">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-[14px] mt-8 md:mt-11">
         <div class="photo-ph relative rounded-md overflow-hidden border border-[#3a434f] grid place-items-center col-span-2 aspect-[16/9] md:row-span-2 md:aspect-auto">
           <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Featured project photo<br>(large hero shot)</span>
         </div>
@@ -122,7 +136,7 @@ const navLinks = [
     </div>
   </section>
 
-  <section id="why" class="py-[84px]">
+  <section id="why" class="py-14 md:py-[84px]">
     <div class="max-w-[1140px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-[30px] md:gap-[50px] items-center">
       <div>
         <div class="text-ind-amber-d font-extrabold tracking-[.18em] uppercase text-[13px] mb-3">Why {business.shortName}</div>
@@ -139,13 +153,13 @@ const navLinks = [
           ))}
         </ul>
       </div>
-      <div class="photo-ph relative aspect-[5/4] rounded-md overflow-hidden border border-[#3a434f] grid place-items-center">
+      <div class="photo-ph relative aspect-[5/4] rounded-md overflow-hidden border border-[#3a434f] hidden md:grid place-items-center">
         <span class="text-[#8b95a2] text-[13px] font-semibold tracking-[.04em] text-center px-[14px]">&#9670; Photo of {business.owner} / crew on the job</span>
       </div>
     </div>
   </section>
 
-  <section id="quote" class="bg-ind-amber text-[#1a1a1a] text-center py-[84px]">
+  <section id="quote" class="bg-ind-amber text-[#1a1a1a] text-center py-14 md:py-[84px]">
     <div class="max-w-[1140px] mx-auto px-6">
       <h2 class="font-extrabold leading-[1.15] -tracking-[.01em] uppercase text-[clamp(26px,4vw,40px)]">Ready to Start Your Project?</h2>
       <p class="text-[18px] my-[14px] mb-[26px] font-semibold">Get a free, no-obligation estimate today.</p>
@@ -154,7 +168,7 @@ const navLinks = [
     </div>
   </section>
 
-  <footer class="bg-ind-ink text-[#aab3bf] pt-[50px] pb-[30px]">
+  <footer class="bg-ind-ink text-[#aab3bf] pt-10 pb-6 md:pt-[50px] md:pb-[30px]">
     <div class="max-w-[1140px] mx-auto px-6 flex flex-wrap justify-between gap-[26px]">
       <div class="max-w-[300px]">
         <div class="flex items-center gap-3 mb-[14px]">
