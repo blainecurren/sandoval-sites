@@ -12,11 +12,17 @@ pat='(\b[0-9]{3}-[0-9]{2}-[0-9]{4}\b)|(\b(0[1-9]|1[0-2])[/-](0[1-9]|[12][0-9]|3[
 files=$(git ls-files '*.md' '*.txt' '*.csv' '*.json' '*.yaml' '*.yml' '*.sql' \
                      '*.astro' '*.html' '*.ts' '*.tsx' '*.js' '*.jsx' '*.css')
 [ -z "$files" ] && { echo "canary clean ($cls) — no text/data files"; exit 0; }
-hits=$(echo "$files" | xargs grep -nE "$pat" 2>/dev/null || true)
+# -a + LC_ALL=C: GNU grep >= 3.5 (ubuntu-latest) moves "binary file matches" to stderr, which is discarded
+# below, so a fixture holding a NUL or a Latin-1 byte under C.UTF-8 printed NOTHING for a real SSN hit and
+# the gate said "canary clean" (proved 2026-10-21 on GNU grep 3.11 and BSD grep; hhkb PR #44). -H keeps
+# the filename when xargs hands grep a single file.
+hits=$(echo "$files" | LC_ALL=C xargs grep -naHE "$pat" 2>/dev/null || true)
 if [ -f .phi-canary-allow ]; then
   # Filter out comment/blank lines BEFORE using as -F pattern set.
   # An empty pattern in -Ff matches every line (silent disable); comment lines would otherwise act as filters.
-  hits=$(echo "$hits" | grep -vFf <(grep -vE '^[[:space:]]*(#|$)' .phi-canary-allow) || true)
+  # Same -a + LC_ALL=C as the search: a hit line holding a Latin-1 byte made GNU grep treat stdin as binary,
+  # -v then printed nothing, and the allowlist pass emptied $hits (proved 2026-10-21).
+  hits=$(echo "$hits" | LC_ALL=C grep -vaFf <(grep -vE '^[[:space:]]*(#|$)' .phi-canary-allow) || true)
 fi
 if [ -n "$hits" ]; then
   echo "CANARY TRIPPED on a non-phi repo. Re-classify to phi, or allowlist with justification:" >&2
