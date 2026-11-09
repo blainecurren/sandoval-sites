@@ -77,7 +77,7 @@ GitHub Pages (public repo `blainecurren/sandoval-sites`). Static build via GitHu
 
 ## Workflow Commands
 - /standup      — morning brief: sprint health, what shipped, where to pick up
-- /ship         — commit + update docs + sync to Obsidian
+- /ship         — commit + open the PR + update repo docs (global command; the PR is the record)
 - /sprint-start — kick off a new sprint
 - /sprint-close — close sprint, build changelog from journal
 - /breakdown    — deep-map this project into Obsidian
